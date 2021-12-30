@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'logout' %}'">logout</button>
+</div>
+<br>
+<p>Welcome, {{request.user.full_name}}</p>
+<h2>Choose About Yourself</h2>
+</body>
+<p>if you are a supplier</p>
+<div>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'supplier' %}'">Supplier</button>
+</div>
+<p>if you are a customer</p>
+<div>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10"  onclick="location.href='{% url 'supplier_info' %}'">Customer</button>
+</div>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'logout' %}'">logout
+    </button>
+    <br><br>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'supplier_info' %}'">Suppliers Detail
+    </button>
+</div>
+<h3>Supplier Form</h3>
+
+<div>
+    <form method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{sform.as_p}}
+        <br>
+        <div id="hall" class="hide">
+            {% for field in hform %}
+            <p>
+                {{ field.errors }}
+                {{ field.label_tag }}
+                {{ field }}
+            </p>
+
+            {% endfor %}
+        </div>
+        <div id="comedy" class="hide">
+            {{cform.as_p}}
+        </div>
+        <div id="photographer" class="hide">
+            {{pform.as_p}}
+        </div>
+        <div id="musician" class="hide">
+            {{mform.as_p}}
+        </div>
+        <div id="party" class="hide">
+            {{kform.as_p}}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+$(document).ready(function(){
+function getType() {
+const type = $("#id_type").val()
+  if(type==="Hall"){
+   $('#hall').removeClass('hide');}
+   else {$('#hall').addClass('hide');}
+
+  if(type==="Comedy"){
+   $('#comedy').removeClass('hide');}
+   else {$('#comedy').addClass('hide');}
+
+   if(type==="Photographer"){
+   $('#photographer').removeClass('hide');}
+   else {$('#photographer').addClass('hide');}
+
+   if(type==="Party"){
+   $('#party').removeClass('hide');}
+   else {$('#party').addClass('hide');}
+
+   if(type==="Musician"){
+   $('#musician').removeClass('hide');}
+   else {$('#musician').addClass('hide');}
+}
+getType()
+$("#id_type").change(function () {
+getType()
+})
+});
+
+</script>
+</body>
+</html>

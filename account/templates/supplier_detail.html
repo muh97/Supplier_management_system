@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier Info</title><style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'logout' %}'">logout
+    </button>
+    <br><br>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'index' %}'">Update
+    </button>
+</div>
+<div> <h3> Supplier Detail</h3></div>
+<div>
+    <form method="get">
+       <p> <label for="type">Search by Type:</label>
+  <input type="text" id="type" name="type" value="{{request.GET.type}}">
+           </p>
+        <p> <label for="min_deposit">Search by Deposit:</label>
+  <input type="number" id="min_deposit" name="min_deposit"  value="{{request.GET.min_deposit}}"> to
+            <input type="number" id="max_deposit" name="max_deposit" value="{{request.GET.max_deposit}}">
+
+           </p>
+        <button type="submit" class="btn btn-primary">Submit</button><br><br>
+        <label>Sort by:</label>
+        <button type="submit" class="btn btn-primary" name="ascend" value="'ascend">Ascending</button>
+        <button type="submit" class="btn btn-primary" name="descend" value="descend">Descending</button>
+        </form>
+    <br>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'supplier_detail' user.user_name %}'">Reset</button><br>
+
+</div>
+<br>
+<div>
+<table style="width:30%">
+    <tr>
+        <th>Supplier</th>
+        <th>Type</th>
+        <th>Upfront Deposit</th>
+    </tr>
+    {% for supply in object_list %}
+    <tr>
+        <td>{{supply.user.full_name}}</td>
+        <td>{{supply.type}}</td>
+        <td>{{supply.deposit}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</body>
+</html>

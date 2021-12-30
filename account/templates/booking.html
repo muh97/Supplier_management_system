@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+</head>
+<body>
+<div>
+    <button onclick="location.href='{% url 'logout' %}'">logout </button>
+    <p>Welcome on Board <strong>{{request.user |capfirst }}</strong></p>
+    <h3> Make Booking</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Book</button>
+</form>
+</body>
+</html>

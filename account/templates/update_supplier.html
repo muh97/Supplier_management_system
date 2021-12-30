@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Supplier</title>
+</head>
+<body>
+<div>
+    <button class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" onclick="location.href='{% url 'logout' %}'">logout
+    </button>
+</div>
+
+<div>
+    <h3>Supplier Detail</h3>
+    <p><strong>Supplier Name: </strong>{{request.user.full_name}}</p>
+</div>
+<div>
+    <h3>Data Updation</h3>
+    <form method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{suform.as_p}}
+        {% if supplier.type == "Hall" %}
+        <div>
+            <h5>Hall Form</h5>
+            {{form.as_p}}
+        </div>
+        {% elif supplier.type == "Comedy" %}
+        <div>
+            <h5>Comedy Form</h5>
+            {{form.as_p}}
+        </div>
+        {% elif supplier.type == "Photographer" %}
+        <div>
+            <h5>Photographer Form</h5>
+            {{form.as_p}}
+        </div>
+        {% elif supplier.type == "Party" %}
+        <div>
+            <h5> Party Form</h5>
+            {{form.as_p}}
+        </div>
+        {% elif supplier.type == "Musician" %}
+        <div>
+            <h5>Musician Form</h5>
+            {{form.as_p}}
+        </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+</body>
+</html>
